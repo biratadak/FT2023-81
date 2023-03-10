@@ -8,12 +8,13 @@ function redirect_to($url)
     exit;
 }
 
-if (isset($_SESSION['userId'])) {
+if (isset($_SESSION['loggedIn'])) {
     session_destroy();
     redirect_to("index.php");
     // echo '<script>location.href="index.php"</script>';
 } else {
-    redirect_to("index.php");
+
+    redirect_to("index.php");   
 
     // echo '<script>location.href="index.php"</script>';
 }

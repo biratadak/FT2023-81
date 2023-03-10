@@ -1,0 +1,161 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.fd-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.fd-col {
+  display: flex;
+  flex-direction: column;
+}
+.sp-bw{
+  display: flex;
+  justify-content: space-between;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner-text {
+  font-size: large;
+}
+
+.error {
+  color: red;
+}
+.success{
+  background-color: rgb(19, 155, 27);
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+.center{
+  width: max-content;
+  margin: auto;
+}
+.container{
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+/* index page styling */
+.form-div{
+  border-radius: 10px;
+  padding: 20px 30px;
+  box-shadow: 0 0 20px 1px rgba(255, 255, 255, 0.793);
+  backdrop-filter: blur(5px);
+  max-width: 200px;
+  margin: 0 auto;
+}
+.form-div>input{
+  border: 2px rgba(255, 255, 255, 0.796) solid;
+  border-radius: 5px;
+}
+
+/* submit page */
+body {
+  height: 100vh;
+  /* background: url("https://source.unsplash.com/random/1400x810/?computer,softwear"); */
+  background: linear-gradient(180deg,rgba(0, 0, 0, 0.79),rgba(0, 0, 0, 0.19)), url("https://source.unsplash.com/random/1400x810/?login,4K");  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-color: #bfff9380; */
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+
+/* logout button style */
+
+.logout-btn{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  border: 1px solid whitesmoke;
+  color: red;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 2px 0px 2px 5px;
+  font-size: smaller;
+  letter-spacing: 5px;
+  background-color: #800000a3;
+}
+.logout-btn:hover{
+  background-color: aliceblue;
+  box-shadow: 0px 0px 15px 5px red;
+  transition-duration: 0.5s;
+  content:"das";
+}
+
+#togglePassword,#toggleConfirmPassword{
+  margin-left:-25px;
+}
+
+.link-btn{
+  text-decoration: none;
+  color: lightblue;  
+}
+
+.grow{
+  font-size: xx-small;
+
+}
+.grow:hover{
+transition-duration: 0.5s;
+font-size: medium;
+}
+
+.hover-eff:hover{
+background-color: rgba(240, 248, 255, 0.708);
+border: 2px solid rgba(0, 0, 0, 0.5);
+}
+.click-eff:active{
+background-color: rgba(1, 12, 49, 0.708);
+border: 2px solid black;
+
+}
+
+/* grid items of index page assigment 7 */
+.grid{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 20px;
+  row-gap: 30px;
+  padding: 20px 20px;
+  border: 1px solid whitesmoke;
+
+}
+.grid-items>a{
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  padding: 2px 20px;
+  color: bisque;
+}
+
+/* input field */
+input{
+  background-color: rgba(245, 245, 245, 0.692);
+  border: 2px solid whitesmoke;
+  /* border-radius: 10px; */
+
+  padding: 2px 5px;
+  margin: 5px 0px;
+  color: rgb(5, 25, 25);
+}
+.btn{
+  color: aliceblue;
+  border-radius: 5px;
+  
+}
+

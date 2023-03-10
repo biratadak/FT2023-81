@@ -1,66 +1,77 @@
-<!DOCTYPE HTML>
+<?php
+require("class/dbconnection.php");
+session_start();
+
+if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
+  header("Location:submit.php");
+
+
+
+// Password validation section
+$db = new Database();
+// Connect with user-pass table database.
+$up = $db->connect("login_credentials");
+
+// Checks first if submit is clicked
+if (isset($_POST["userId"]) && isset($_POST["pass"])) {
+  // If id and pass fields are not empty.
+  if ($_POST['userId'] != "" && $_POST["pass"] != "") {
+    if (isset($up->query("select pass from user_pass where userid='" . $_POST["userId"] . "'")->fetch_assoc()['pass'])) {
+      $PASSWORD = $up->query("select pass from user_pass where userid='" . $_POST["userId"] . "'")->fetch_assoc()['pass'];
+      // If pass and user is correct and available in db
+      if ($_POST["pass"] == $PASSWORD) {
+        $_SESSION["loggedIn"] = TRUE;
+        $_SESSION['userId'] = $_POST['userId'];
+        $_SESSION['pass'] = $_POST['pass'];
+        header("Location:submit.php");
+      }
+      // If pass is incorrect for given user
+      else {
+        echo "<br><h5 class='error'>pass is incorrect</h5>";
+        $forgotPass = TRUE;
+        $_SESSION['userId'] = $_POST['userId'];
+
+      }
+    } else {
+      echo "Login credentials not valid";
+    }
+  } else {
+    echo "Fill all fileds";
+  }
+}
+?>
 <html>
 
 <head>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="stylesheet/style.css">
+  <title>Login</title>
 
 </head>
+
 <body>
-  <?php
-  // Define variables and set to empty values
-  $userIdErr = $passErr = "";
-  $userId = $pass = "";
-
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST["userId"]) && !empty($_POST["pass"]))
-
-
-      if (empty($_POST["userId"])) {
-        $userIdErr = "UserId is required";
-      } else {
-        $userId = test_input($_POST["userId"]);
-        // Check if userId only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $userId)) {
-          $userIdErr = "Only letters and white space allowed";
-
-        }
-      }
-
-    if (empty($_POST["pass"])) {
-      $passErr = "Email is required";
-    } else {
-      $pass = test_input($_POST["pass"]);
-    }
-
-  }
-
-  function test_input($data)
-  {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-  ?>
 
   <h2>Login Page</h2>
-  <form class="login-form" method="post" action="submit.php">
-    <p><span class="error">* required field</span></p>
-    User Id: <input type="text" name="userId" value="<?php echo $userId; ?>">
-    <span class="error">*
-      <?php echo $userIdErr; ?>
-    </span>
+  <form class="form-div" method="POST" action="index.php" onsubmit="return validation()">
+    User Id: <span class="error" name="usererr">*
+    </span><br> <input type="text" name="userId" value=<?php if (isset($_POST['userId']))
+      echo $_POST['userId']; ?>>
+   
     <br><br>
-    Password: <input type="text" name="pass" value="<?php echo $pass; ?>">
-    <span class="error">*
-      <?php echo $passErr; ?>
-    </span>
-    <br><br>
-    <div class="center">
-      <input type="submit" name="submit" id="login-btn" value="Login">
-    </div>
+    Password:<span class="error" name="passerr">*
+    </span><br><input type="text" name="pass" value=<?php if (isset($_POST['pass']))
+      echo $_POST['pass']; ?>>
+    
+    <?php if (isset($forgotPass) && $forgotPass)
+      echo '<br><a class="link-btn" href="forgotPass.php">forgotten password?</a>' ?>
+      <br><br>
+      <div class="sp-bw">
+        <input class="hover-eff click-eff btn" type="submit" name="submit" id="login-btn" value="Login">
+        <a class="link-btn grow " href="register.php">I'm new</a>
 
-  </form>
+      </div>
 
-</body>
-</html>
+    </form>
+   
+  </body>
+
+  </html>
