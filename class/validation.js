@@ -34,7 +34,7 @@ function validPhone(fieldName, errorFieldName) {
 function validMail(fieldName, errorFieldName) {
   document.getElementsByName(fieldName)[0].onkeyup = function () {
     inputtxt = document.getElementsByName(fieldName)[0].value;
-    var pattern = /^[a-z-.]{1,20}[@][a-z]{1,10}[.][a-z]{2,4}$/;
+    var pattern = /^[a-z0-9-.]{1,20}[@][a-z]{1,10}[.][a-z]{2,4}$/;
     if (inputtxt.match(pattern)) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
     } else {
