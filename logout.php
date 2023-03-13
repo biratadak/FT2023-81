@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 //  Code to redirect the page to given URL 
 
@@ -15,6 +16,5 @@ if (isset($_SESSION['loggedIn'])) {
 else {
   redirect_to("index.php");
 }
-
-
+ 
 ?>

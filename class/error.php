@@ -16,13 +16,6 @@ session_start();
     <div class="center">
         <h2>Errors:</h1>
         </div>
-        <!-- <?php
-        // echo'<div class="center">';
-
-        // echo $_SESSION['userId-err'];
-        // echo $_SESSION['pass-err'];
-        // echo '</div>'
-        
-        ?> -->
 </body>
 </html>
+ 

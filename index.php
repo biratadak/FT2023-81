@@ -1,4 +1,3 @@
-
 <?php
 
 require("class/dbconnection.php");
@@ -32,7 +31,7 @@ if (isset($_POST["userId"]) && isset($_POST["pass"])) {
         echo "<br><h4 class='error'>Incorrect Password</h4>";
         $forgotPass = TRUE;
         $_SESSION['userId'] = $_POST['userId'];
-
+ 
       }
     } else {
       echo "<br><h4 class='error'>Login credentials not valid</h4>";

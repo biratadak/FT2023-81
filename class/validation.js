@@ -6,7 +6,8 @@ function allLetter(fieldName, errorFieldName) {
     var pattern = /^[A-Za-z-' ]+$/;
     if (inputtxt.match(pattern)) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
-    } else {
+    } 
+    else {
       document.getElementsByName(errorFieldName)[0].innerHTML =
         "Only letters and white space allowed";
     }
@@ -19,11 +20,13 @@ function validPhone(fieldName, errorFieldName) {
     var pattern = /^[+][9][1][6-9][0-9]{9}$/;
     if (inputtxt.match(pattern)) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
-    } else {
+    } 
+    else {
       if (inputtxt.slice(0, 3) != "+91") {
         document.getElementsByName(errorFieldName)[0].innerHTML =
           "Add +91 beggining";
-      } else {
+      } 
+      else {
         document.getElementsByName(errorFieldName)[0].innerHTML =
           "Invalid Number";
       }
@@ -37,12 +40,13 @@ function validMail(fieldName, errorFieldName) {
     var pattern = /^[a-z0-9-.]{1,20}[@][a-z]{1,10}[.][a-z]{2,4}$/;
     if (inputtxt.match(pattern)) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
-    } else {
+    } 
+    else {
       document.getElementsByName(errorFieldName)[0].innerHTML =
         "Invalid Mail Id";
     }
   };
-}
+} 
 // Function to live update the display field with data from given name field.
 function liveUpdate(fieldName) {
   document.getElementsByName(fieldName)[0].onkeyup = function () {
@@ -77,11 +81,11 @@ function validPass(fieldName, errorFieldName) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
     } 
     else {
-      // check for one digit
+      // Checks for atleast one digit.
       if (!inputtxt.match(/^(?=.*\d)/))
         document.getElementsByName(errorFieldName)[0].innerHTML =
           "<br>*Password should contain atleast one digit";
-      // check for one alphabet
+      // Checks for atleast one alphabet.
       else if (!inputtxt.match(/^(?=.*[a-z])(?=.*[A-Z])/))
         document.getElementsByName(errorFieldName)[0].innerHTML =
           "<br>*Password should contain atleast one uppercase and lowercase";
@@ -98,23 +102,23 @@ function validPass(fieldName, errorFieldName) {
   };
 }
 
-// Toggle show and hide password script
+// Toggle show and hide password script.
 function togglePass(buttonField, passField) {
   const togglePassword = document.querySelector(buttonField);
   const password = document.querySelector(passField);
 
   togglePassword.addEventListener("click", function () {
-    // toggle the type attribute
+    // Toggle the type attribute.
     const type =
       password.getAttribute("type") === "password" ? "text" : "password";
     password.setAttribute("type", type);
 
-    // toggle the icon
+    // Toggle the icon.
     this.classList.toggle("bi-eye");
   });
 }
 
-// Countdown timer after some delay
+// Countdown timer after some delay.
 function countDown(displayQuerySelector, delay) {
   const field = document.querySelector(displayQuerySelector);
   let num = parseInt(delay);

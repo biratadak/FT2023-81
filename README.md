@@ -18,7 +18,7 @@ Created reset Password section.
 - Both password and confirm password should be valid as per convention. 
 - If Password changed successsfully once then change button is disabled.
 - After resetting password redirect page to login page in 10 seconds.
-
+ 
 Created a welcome page with a details form.
 - User need to fill the form to genarate pgf details.
 - marks section should have proper structure as per instructions.

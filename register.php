@@ -10,7 +10,7 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
 $db = new Database();
 // Connect with user-pass table database.
 $up = $db->connect("login_credentials");
-
+ 
 // Checks first if submit is clicked
 if (isset($_POST["name"]) && isset($_POST["mailId"]) && isset($_POST["userId"]) && isset($_POST["pass"])) {
   // If id and pass fields are not empty.

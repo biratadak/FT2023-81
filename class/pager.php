@@ -32,5 +32,5 @@ if (isset($_GET['q']))
       echo ("<br><h2 class='error'>#" . $_GET['q'] . " is not a valid Assignment");
       $wrongInput = TRUE;
   }
-
+ 
 ?>

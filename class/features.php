@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 //Getting secret credentials using dotenv
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
-/**
+/** 
  * Provides some usefull features for the checking, validating and upload files.
  * 
  * @method onlyAlpha().
@@ -48,7 +48,7 @@ $dotenv->safeLoad();
  *  Store path of profile-pic of the user.
  * 
  **/
-class features
+class Features
 {
   // String methods here 
 

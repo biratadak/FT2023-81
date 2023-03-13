@@ -1,8 +1,9 @@
 <?php
+
 require("class/dbconnection.php");
 require("class/features.php");
 session_start();
-$feature=new features();
+$feature=new Features();
 // If already loggedin redirect to submit page.
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
   header("Location:submit.php");
@@ -43,7 +44,7 @@ if (isset($_POST['pass']) && isset($_POST['confirmPass']) && !empty($_POST['pass
     echo "<h4 class='error'>Password not matched</h4>";
   }
 }
-
+ 
 ?>
 
 <body>

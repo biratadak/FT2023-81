@@ -18,7 +18,7 @@ else {
   <title>My Site</title>
   <link rel="stylesheet" href="stylesheet/style.css">
 </head>
-
+ 
 <body>
   <div class="container">
     <h3>Welcome, <i><b>

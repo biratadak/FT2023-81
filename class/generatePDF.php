@@ -8,7 +8,7 @@ require '../vendor/autoload.php';
  * 
  * @method Header()
  *  Creates header of the PDF.
- * 
+ *  
  * @method Footer()
  *  Creates footer of the PDF.
  * 
@@ -22,8 +22,8 @@ class PDF extends FPDF
     public $mailId;
     public $marks;
     public $mobileNo;
-    // Page header
 
+    // Page header section.
     function Header()
     {
         // Logo
@@ -38,10 +38,10 @@ class PDF extends FPDF
         $this->Ln(20);
     }
 
-    // Page footer
+    // Page footer section.
     function Footer()
     {
-        // Position at 1.5 cm from bottom
+        // Position at 1.5 cm from bottom.
         $this->SetY(-15);
         // Arial italic 8
         $this->SetFont('Arial', 'I', 8);
@@ -49,6 +49,7 @@ class PDF extends FPDF
         $this->Cell(0, 10, 'Page ' . $this->PageNo() . '/{nb}', 0, 0, 'C');
     }
 
+    // Setting PDF details.
     function setDetails($name = "N/A", $mailId = "N/A", $marks = array(array("N/A", 0)), $mobileNo = "N/A")
     {
         $this->name = $name;

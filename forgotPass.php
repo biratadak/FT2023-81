@@ -1,4 +1,5 @@
 <?php
+
 require("class/dbconnection.php");
 require("class/features.php");
 session_start();
@@ -35,7 +36,7 @@ if (isset($_POST["userId"]) && isset($_POST["mailId"])) {
 }
 ?>
 <html>
-
+ 
 <head>
   <link rel="stylesheet" href="stylesheet/style.css">
   <title>Login</title>
