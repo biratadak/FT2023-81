@@ -94,14 +94,14 @@ class Features
    **/
   function validMailId($mailId)
   {
-    if (preg_match("/^[a-z-.]{1,20}[@][a-z]{1,10}[.][a-z]{2,4}$/", $mailId)) {
+    if (preg_match("/^[a-z0-9-.]{1,20}[@][a-z]{1,10}[.][a-z]{2,4}$/", $mailId)) {
       return TRUE;
     }
     else {
       return FALSE;
     }
   }
-
+ 
   /**
    * Checks Mail Id validation with mailBoxLayer API.
    * 
