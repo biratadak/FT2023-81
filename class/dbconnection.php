@@ -1,4 +1,5 @@
 <?php
+
 // Loaded all required libraries.
 require("../vendor/autoload.php");
 //Loading .env credentials.
@@ -27,10 +28,12 @@ class Database
   public function connect($database)
   {
     $connect = new mysqli("localhost", $_ENV['sqlUser'], $_ENV['sqlPass'], $database);
-    if ($connect->connect_error)
+    if ($connect->connect_error){
       echo '<script>"Connection error:" . $connect->connect_error</script>';
-    else
+    }
+    else{
       echo '<script>console.log("Successfully connected with ' . $database . ' database.")</script>';
+    }
     return $connect;
   }
 

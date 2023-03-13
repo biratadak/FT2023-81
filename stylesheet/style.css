@@ -60,12 +60,10 @@
 /* submit page */
 body {
   height: 100vh;
-  /* background: url("https://source.unsplash.com/random/1400x810/?computer,softwear"); */
   background: linear-gradient(180deg,rgba(0, 0, 0, 0.79),rgba(0, 0, 0, 0.19)), url("https://source.unsplash.com/random/1400x810/?login,4K");  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* background-color: #bfff9380; */
   color: whitesmoke;
   display: flex;
   justify-content: center;
@@ -158,4 +156,3 @@ input{
   border-radius: 5px;
   
 }
-

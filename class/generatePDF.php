@@ -3,6 +3,19 @@
 session_start();
 
 require '../vendor/autoload.php';
+/**
+ * Creates PDF as per given parameters.
+ * 
+ * @method Header()
+ *  Creates header of the PDF.
+ * 
+ * @method Footer()
+ *  Creates footer of the PDF.
+ * 
+ * @method setDetails()
+ *  Sets details of the user in the PDF.
+ * 
+ */
 class PDF extends FPDF
 {
     public $name;
@@ -69,7 +82,6 @@ foreach ($_SESSION['marks'] as $m) {
 
 }
 
-// $pdf->Output();
 $pdf->Output('D',"marksheet.pdf");
 $pdf->Output('F',"../uploaded_PDFs/marksheet.pdf");
 

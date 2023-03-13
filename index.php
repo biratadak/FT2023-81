@@ -1,10 +1,12 @@
+
 <?php
+
 require("class/dbconnection.php");
 session_start();
 
+// If already loggedin redirect to submit page.
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
   header("Location:submit.php");
-
 
 
 // Password validation section
@@ -27,16 +29,16 @@ if (isset($_POST["userId"]) && isset($_POST["pass"])) {
       }
       // If pass is incorrect for given user
       else {
-        echo "<br><h5 class='error'>pass is incorrect</h5>";
+        echo "<br><h4 class='error'>Incorrect Password</h4>";
         $forgotPass = TRUE;
         $_SESSION['userId'] = $_POST['userId'];
 
       }
     } else {
-      echo "Login credentials not valid";
+      echo "<br><h4 class='error'>Login credentials not valid</h4>";
     }
   } else {
-    echo "Fill all fileds";
+    echo "<br><h4 class='error'>Fill all fileds</h4>";
   }
 }
 ?>
@@ -44,6 +46,8 @@ if (isset($_POST["userId"]) && isset($_POST["pass"])) {
 
 <head>
   <link rel="stylesheet" href="stylesheet/style.css">
+  <script src="class/validation.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
   <title>Login</title>
 
 </head>
@@ -58,8 +62,8 @@ if (isset($_POST["userId"]) && isset($_POST["pass"])) {
    
     <br><br>
     Password:<span class="error" name="passerr">*
-    </span><br><input type="text" name="pass" value=<?php if (isset($_POST['pass']))
-      echo $_POST['pass']; ?>>
+    </span><br><input type="password" name="pass" id="pass" value=<?php if (isset($_POST['pass']))
+      echo $_POST['pass']; ?>><i class="bi bi-eye-slash " id="togglePassword"></i>
     
     <?php if (isset($forgotPass) && $forgotPass)
       echo '<br><a class="link-btn" href="forgotPass.php">forgotten password?</a>' ?>
@@ -73,5 +77,7 @@ if (isset($_POST["userId"]) && isset($_POST["pass"])) {
     </form>
    
   </body>
-
+  <script>
+    togglePass("#togglePassword","#pass");
+  </script>
   </html>

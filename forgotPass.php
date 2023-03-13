@@ -7,9 +7,6 @@ session_start();
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
   header("Location:submit.php");
 
-// Expire mail after mailExpireTime
-
-
 // Connect with user-pass table database.
 $db = new Database();
 $up = $db->connect("login_credentials");
@@ -22,10 +19,10 @@ if (isset($_POST["userId"]) && isset($_POST["mailId"])) {
     $sql = "select mailid from user_pass where userid='" . $_POST['userId'] . "'";
     $mail = $up->query($sql)->fetch_row()[0];
     if ($mail == $_POST['mailId']) {
-        // if mail id is matched with user id send mail
-        $feature =new features();
-        $_SESSION['userId']=$_POST['userId'];
-        $feature->sendMail($_POST['mailId'],"Password reset link",'<a href="http://php.nginx/FT2023-81/resetPass.php?user='. base64_encode($_SESSION['userId']). '">Reset Password</a>');
+      // If mail id is matched with user id send mail
+      $feature = new features();
+      $_SESSION['userId'] = $_POST['userId'];
+      $feature->sendMail($_POST['mailId'], "Password reset link", '<a href="http://php.nginx/FT2023-81/resetPass.php?user=' . base64_encode($_SESSION['userId']) . '">Reset Password</a>');
 
     } 
     else {
@@ -47,15 +44,17 @@ if (isset($_POST["userId"]) && isset($_POST["mailId"])) {
 <body>
 
   <h2>Create New Password</h2>
-  <form class="form-div" method="POST" action="forgotPass.php" >
-    User Id:  <span class="error" name="usererr">*</span><br>
-    <input type="text" name="userId" value=<?php if(isset($_SESSION['userId']))echo $_SESSION['userId']; ?>>
-    
+  <form class="form-div" method="POST" action="forgotPass.php">
+    User Id: <span class="error" name="usererr">*</span><br>
+    <input type="text" name="userId" value=<?php if (isset($_SESSION['userId']))
+      echo $_SESSION['userId']; ?>>
+
     </span>
     <br><br>
     Mail Id: <span class="error">*</span><br>
-    <input type="email" name="mailId" value=<?php if(isset($_POST['mailId']))echo $_POST['mailId']; ?>>
-   
+    <input type="email" name="mailId" value=<?php if (isset($_POST['mailId']))
+      echo $_POST['mailId']; ?>>
+
     <br><br>
     <div class="sp-bw">
       <input class="hover-eff click-eff btn" type="submit" name="send mail" id="sendMailBtn" value="Send Mail">
@@ -67,12 +66,12 @@ if (isset($_POST["userId"]) && isset($_POST["mailId"])) {
 
 </body>
 <script>
-
- if(document.getElementsByClassName('success')[0].innerHTML);
- {
-  console.log("mail sent");
-  document.getElementById("sendMailBtn").disabled=true;
- }
+  // If mail is sent then disable the sent mail button
+  if (document.getElementsByClassName('success')[0].innerHTML);
+  {
+    console.log("mail sent");
+    document.getElementById("sendMailBtn").disabled = true;
+  }
 </script>
 
 </html>

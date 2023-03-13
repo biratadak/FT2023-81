@@ -1,5 +1,13 @@
 <?php
-// Pager section to redirect pages using query
+
+// Code to redirect the page to given URL 
+function redirect_to($url)
+{
+    header("Location: " . $url);
+    exit;
+}
+
+// Pager section to redirect pages using query parameter
 if (isset($_GET['q']))
   switch ($_GET['q']) {
     case 1:

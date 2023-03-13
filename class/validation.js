@@ -1,6 +1,7 @@
+
 // Function to check only alphabet and spaces in given name field.
 function allLetter(fieldName, errorFieldName) {
-  document.getElementsByName(fieldName)[0].onkeyup = function () {
+  document.getElementsByName(fieldName)[0].onchange = function () {
     inputtxt = document.getElementsByName(fieldName)[0].value;
     var pattern = /^[A-Za-z-' ]+$/;
     if (inputtxt.match(pattern)) {
@@ -19,12 +20,13 @@ function validPhone(fieldName, errorFieldName) {
     if (inputtxt.match(pattern)) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
     } else {
-      if (inputtxt.slice(0, 3) != "+91")
+      if (inputtxt.slice(0, 3) != "+91") {
         document.getElementsByName(errorFieldName)[0].innerHTML =
           "Add +91 beggining";
-      else
+      } else {
         document.getElementsByName(errorFieldName)[0].innerHTML =
           "Invalid Number";
+      }
     }
   };
 }
@@ -51,64 +53,74 @@ function liveUpdate(fieldName) {
   };
 }
 
- // Function to check valid Indian phone no.
- function validUser(fieldName, errorFieldName) {
-    document.getElementsByName(fieldName)[0].onkeyup = function () {
-        inputtxt = document.getElementsByName(fieldName)[0].value;
-        var pattern = /^[A-Za-z-0-9' ]+$/;
-        if (inputtxt.match(pattern)) {
-            document.getElementsByName(errorFieldName)[0].innerHTML = "";
-        }
-        else {
-            document.getElementsByName(errorFieldName)[0].innerHTML =
-                "User Id should only contain alphabet and number";
-
-        }
-    };
+// Function to check valid Indian phone no.
+function validUser(fieldName, errorFieldName) {
+  document.getElementsByName(fieldName)[0].onkeyup = function () {
+    inputtxt = document.getElementsByName(fieldName)[0].value;
+    var pattern = /^[A-Za-z-0-9' ]+$/;
+    if (inputtxt.match(pattern)) {
+      document.getElementsByName(errorFieldName)[0].innerHTML = "";
+    } 
+    else {
+      document.getElementsByName(errorFieldName)[0].innerHTML =
+        "User Id should only contain alphabet and number";
+    }
+  };
 }
 
 // Function to check Password has atleast one char,digit and Special character.
 function validPass(fieldName, errorFieldName) {
-    document.getElementsByName(fieldName)[0].onkeyup = function () {
-        inputtxt = document.getElementsByName(fieldName)[0].value;
-        var pattern = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-        if (inputtxt.match(pattern)) {
-            document.getElementsByName(errorFieldName)[0].innerHTML = "";
-        } else {
-            // check for one digit
-            if (!inputtxt.match(/^(?=.*\d)/))
-                document.getElementsByName(errorFieldName)[0].innerHTML =
-                    "<br>*Password should contain atleast one digit";
-            // check for one alphabet
-            else if (!inputtxt.match(/^(?=.*[a-z])(?=.*[A-Z])/))
-                document.getElementsByName(errorFieldName)[0].innerHTML =
-                    "<br>*Password should contain atleast one uppercase and lowercase";
-            else if (!inputtxt.match(/^(?=.*[!@#$%^&*])/))
-                document.getElementsByName(errorFieldName)[0].innerHTML =
-                    "<br>*Password should contain atleast special character";
-            else
-                document.getElementsByName(errorFieldName)[0].innerHTML =
-                    "";
-            if(length(inputtxt)<8 && length(inputtxt)<16)
-            {
-                document.getElementsByName(errorFieldName)[0].innerHTML =
-                    "<br>*Password should contain 8 to 16";
-            }
-        }
-    };
+  document.getElementsByName(fieldName)[0].onkeyup = function () {
+    inputtxt = document.getElementsByName(fieldName)[0].value;
+    var pattern = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (inputtxt.match(pattern)) {
+      document.getElementsByName(errorFieldName)[0].innerHTML = "";
+    } 
+    else {
+      // check for one digit
+      if (!inputtxt.match(/^(?=.*\d)/))
+        document.getElementsByName(errorFieldName)[0].innerHTML =
+          "<br>*Password should contain atleast one digit";
+      // check for one alphabet
+      else if (!inputtxt.match(/^(?=.*[a-z])(?=.*[A-Z])/))
+        document.getElementsByName(errorFieldName)[0].innerHTML =
+          "<br>*Password should contain atleast one uppercase and lowercase";
+      else if (!inputtxt.match(/^(?=.*[!@#$%^&*])/))
+        document.getElementsByName(errorFieldName)[0].innerHTML =
+          "<br>*Password should contain atleast special character";
+      else document.getElementsByName(errorFieldName)[0].innerHTML = "";
+      
+      if (length(inputtxt) < 8 && length(inputtxt) < 16) {
+        document.getElementsByName(errorFieldName)[0].innerHTML =
+          "<br>*Password should contain 8 to 16";
+      }
+    }
+  };
 }
 
 // Toggle show and hide password script
-function togglepass(buttonField,passField)
-{
-    const togglePassword = document.querySelector(buttonField);
-    const password = document.querySelector(passField);
+function togglePass(buttonField, passField) {
+  const togglePassword = document.querySelector(buttonField);
+  const password = document.querySelector(passField);
 
-        togglePassword.addEventListener("click", function () {
-            // toggle the type attribute
-            const type = password.getAttribute("type") === "password" ? "text" : "password";
-            password.setAttribute("type", type);
-            
-            // toggle the icon
-            this.classList.toggle("bi-eye");
-        });}
+  togglePassword.addEventListener("click", function () {
+    // toggle the type attribute
+    const type =
+      password.getAttribute("type") === "password" ? "text" : "password";
+    password.setAttribute("type", type);
+
+    // toggle the icon
+    this.classList.toggle("bi-eye");
+  });
+}
+
+// Countdown timer after some delay
+function countDown(displayQuerySelector, delay) {
+  const field = document.querySelector(displayQuerySelector);
+  let num = parseInt(delay);
+  const i = setInterval(() => {
+    num -= 1;
+    field.innerText = num;
+    if (num === 0) clearInterval(i);
+  }, 1000);
+}

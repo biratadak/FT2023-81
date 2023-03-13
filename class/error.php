@@ -1,12 +1,7 @@
 <!DOCTYPE html>
+
 <?php
 session_start();
-// Code to redirect the page to given URL 
-function redirect_to($url)
-{
-    header("Location: " . $url);
-    exit;
-}
 ?>
 <html>
 <head>
